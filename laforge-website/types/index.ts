@@ -1,0 +1,205 @@
+import { PortableTextBlock } from 'sanity'
+
+export interface Staff {
+  _id: string
+  _createdAt: string
+  name: string
+  slug: { current: string }
+  image?: any
+  role: 'head_coach' | 'assistant_coach' | 'guard_coach' | 'physical_trainer' | 'physiotherapist' | 'video_analyst' | 'manager' | 'general_manager' | 'other'
+  customRole?: string
+  bio?: string
+  experience?: number
+  specialties?: string[]
+  email?: string
+  phone?: string
+  linkedin?: string
+  achievements?: string[]
+}
+
+export interface History {
+  _id: string
+  _createdAt: string
+  title: string
+  slug: { current: string }
+  year?: number
+  mainImage: any
+  excerpt: string
+  content: PortableTextBlock[]
+  category?: 'foundation' | 'milestone' | 'victory' | 'expansion' | 'other'
+  order?: number
+  featured: boolean
+}
+
+export interface SiteSettings {
+  _id: string
+  _createdAt: string
+  title: string
+  description?: string
+  logo: string
+  favicon?: any
+  socialLinks?: {
+    instagram?: string
+    facebook?: string
+    twitter?: string
+    youtube?: string
+  }
+  contact?: {
+    email?: string
+    phone?: string
+    address?: string
+  }
+  heroText?: {
+    tagline?: string
+    description?: string
+  }
+}
+
+export interface Player {
+  _id: string
+  _createdAt: string
+  name: string
+  slug: { current: string }
+  image?: any
+  jerseyNumber: number
+  position: 'guard' | 'forward' | 'center'
+  height?: string
+  weight?: number
+  birthDate?: string
+  age?: number
+  nationality?: string
+  canadianResident?: boolean
+  schoolLevel?: string
+  gpa?: number
+  email?: string
+  phone?: string
+  instagram?: string
+  highlightVideo?: string
+  bio?: string
+  stats?: {
+    ppg?: number
+    rpg?: number
+    apg?: number
+    spg?: number
+    bpg?: number
+  }
+  isActive: boolean
+}
+
+export interface Article {
+  _id: string
+  _createdAt: string
+  title: string
+  slug: { current: string }
+  excerpt: string
+  mainImage: any
+  category: 'match' | 'training' | 'team' | 'player' | 'event' | 'other'
+  publishedAt: string
+  content: PortableTextBlock[]
+  author: string
+  featured: boolean
+}
+
+export interface Match {
+  _id: string
+  _createdAt: string
+  opponent: string
+  date: string
+  location: string
+  isHome: boolean
+  status: 'upcoming' | 'live' | 'finished' | 'cancelled'
+  isPlayoff: boolean
+  ourScore?: number
+  opponentScore?: number
+  period?: 'period1' | 'period2' | 'playoffs'
+  opponentLogo?: any
+  highlights?: string
+  recap?: string
+  mvp?: {
+    _ref: string
+    _type: 'reference'
+  } | {
+    _id: string
+    name: string
+    jerseyNumber: number
+    image?: any
+    stats?: {
+      ppg?: number
+      rpg?: number
+      apg?: number
+    }
+  }
+  xFactor?: {
+    _ref: string
+    _type: 'reference'
+  } | {
+    _id: string
+    name: string
+    jerseyNumber: number
+    image?: any
+    stats?: {
+      ppg?: number
+      rpg?: number
+      apg?: number
+    }
+  }
+  teamStats?: {
+    fgPercentage?: number
+    threePointPercentage?: number
+    ftPercentage?: number
+    totalRebounds?: number
+    assists?: number
+    steals?: number
+    blocks?: number
+    turnovers?: number
+  }
+  playerStats?: Array<{
+    _key: string
+    player: {
+      _ref: string
+      _type: 'reference'
+    } | {
+      _id: string
+      name: string
+      jerseyNumber: number
+    }
+    points?: number
+    rebounds?: number
+    assists?: number
+    minutesPlayed?: number
+  }>
+  autoGenerateArticle?: boolean
+}
+
+export interface Training {
+  _id: string
+  _createdAt: string
+  title: string
+  date: string
+  location: 'durocher' | 'saint-lambert'
+  duration: number
+  type?: 'regular' | 'conditioning' | 'tactical' | 'shooting'
+  notes?: string
+  isCancelled: boolean
+}
+
+export interface Gallery {
+  _id: string
+  _createdAt: string
+  title: string
+  slug: { current: string }
+  description?: string
+  date: string
+  category: 'match' | 'training' | 'event' | 'team' | 'other'
+  coverImage: any
+  images?: Array<{
+    _key: string
+    asset: any
+    caption?: string
+  }>
+  videos?: Array<{
+    _key: string
+    title: string
+    url: string
+  }>
+}
