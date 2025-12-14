@@ -1,0 +1,7 @@
+{
+  "rewrites": [
+    { "source": "/calendrier", "destination": "/forge_basketball_calendar.html" },
+    { "source": "/equipe", "destination": "/laforge-equipe.html" },
+    { "source": "/contact", "destination": "/laforge_contact_page (1).html" }
+  ]
+}
